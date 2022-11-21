@@ -16,12 +16,6 @@ public class Radio {
 
     }
 
-    public Radio(int stationsCount, int volumesCount) {
-        maxStation = stationsCount - 1;
-        maxVolume = volumesCount - 1;
-        minStation = stationsCount + 1;
-        minVolume = volumesCount + 1;
-    }
 
     public void next() {
         if (currentStation < maxStation) {
