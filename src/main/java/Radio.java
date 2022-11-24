@@ -2,43 +2,44 @@ public class Radio {
     private int currentStation;
     private int currentVolume;
     private int maxStation;
-    private int minStation;
-
     private int maxVolume;
-    private int minVolume;
 
 
     public Radio() {
         maxStation = 9;
-        minStation = 0;
-        maxVolume = 10;
-        minVolume = 0;
+        maxVolume = 100;
 
     }
 
+    public Radio(int stationCount) {
+        maxStation = stationCount - 1;
+    }
 
     public void next() {
         if (currentStation < maxStation) {
             currentStation++;
-        } else {
-            currentStation = minStation;
+            return;
         }
+        currentStation = 0;
+
     }
 
     public void prev() {
-        if (currentStation > minStation) {
+        if (currentStation > 0) {
             currentStation--;
-        } else {
-            currentStation = maxStation;
+            return;
         }
+        currentStation = maxStation;
+
     }
 
     public int getCurrentStation() {
+
         return currentStation;
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation < minStation) {
+        if (currentStation < 0) {
             return;
         }
         if (currentStation > maxStation) {
@@ -52,30 +53,32 @@ public class Radio {
     public void increaseVolume() {
         if (currentVolume < maxVolume) {
             currentVolume++;
-        } else {
-            currentVolume = maxVolume;
-
+            return;
         }
+        currentVolume = maxVolume;
+
     }
 
     public void decreaseVolume() {
-        if (currentVolume > minVolume) {
-            currentVolume = currentVolume - 1;
+        if (currentVolume > 0) {
+            currentVolume--;
+            return;
         }
+        currentVolume = 0;
     }
+
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < minVolume) {
-            return;
-        }
-        if (currentVolume > maxVolume) {
+        if (currentVolume < 0) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
 }
+
+
